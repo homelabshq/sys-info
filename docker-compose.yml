@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - /sys/class/thermal:/sys/class/thermal:ro
+      - /proc:/proc:ro
+    # Use host PID namespace for process metrics
+    pid: host
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
