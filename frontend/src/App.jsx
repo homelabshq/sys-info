@@ -12,7 +12,7 @@ import {
   RefreshCw
 } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 function formatBytes(bytes) {
   if (bytes === 0) return '0 B'
